@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Raj Barnwal — Senior Android Engineer</title>
+<meta name="description" content="Senior Android Engineer with 9+ years building Kotlin, Jetpack Compose and KMP apps at scale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0C10;
+    --surface:#12151B;
+    --surface-2:#171B22;
+    --border:#242A33;
+    --text:#E7EBEE;
+    --text-muted:#8D98A6;
+    --green:#3DDC84;
+    --purple:#9B7BFF;
+    --purple-deep:#7F52FF;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --display: 'Sora', var(--sans);
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:24px;}
+  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-0.01em;text-wrap:balance;margin:0;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--green);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(61,220,132,.15);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,12,16,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding-block:14px;}
+  .brand{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--text);}
+  .brand span{color:var(--green);}
+  nav.links{display:flex;gap:26px;font-size:14px;color:var(--text-muted);}
+  nav.links a:hover{color:var(--text);}
+  .nav-cta{
+    font-family:var(--mono);font-size:13px;padding:8px 14px;border:1px solid var(--border);
+    border-radius:6px;color:var(--text);
+  }
+  .nav-cta:hover{border-color:var(--green);color:var(--green);}
+  @media (max-width:720px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .photo-flow{
+    background:
+      linear-gradient(180deg, rgba(10,12,16,.88) 0%, rgba(10,12,16,.90) 35%, rgba(10,12,16,.96) 70%, var(--bg) 100%),
+      url('assets/hero/background.jpg');
+    background-size:100% auto;
+    background-position:top center;
+    background-repeat:no-repeat;
+    background-color:var(--bg);
+  }
+  .hero{
+    padding-block:72px 56px;border-bottom:1px solid var(--border);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;}
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;gap:36px;} }
+  .avatar{
+    width:128px;height:128px;border-radius:50%;margin-bottom:24px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg,var(--surface-2) 0%,var(--surface) 60%,var(--bg) 100%);
+    font-family:var(--display);font-weight:700;font-size:38px;color:var(--text);
+    overflow:hidden;border:3px solid var(--border);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+  .hero h1{font-size:44px;line-height:1.12;margin-bottom:14px;}
+  .hero h1 .hl{color:var(--green);}
+  .hero p.lede{color:var(--text-muted);font-size:17px;max-width:52ch;margin-bottom:28px;}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;}
+  .btn{
+    font-family:var(--mono);font-size:13.5px;font-weight:500;
+    padding:11px 18px;border-radius:6px;display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--border);
+  }
+  .btn.primary{background:var(--green);color:#06170D;border-color:var(--green);}
+  .btn.primary:hover{background:#33c876;}
+  .btn.ghost:hover{border-color:var(--purple);color:var(--purple);}
+
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .stat{background:var(--surface);padding:16px 14px;text-align:left;}
+  .stat .num{font-family:var(--display);font-size:22px;font-weight:700;color:var(--green);}
+  .stat .lbl{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
+  @media (max-width:520px){ .stat-row{grid-template-columns:repeat(2,1fr);} }
+
+  /* Kotlin code panel */
+  .code-panel{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    font-family:var(--mono);font-size:13.5px;overflow:hidden;
+  }
+  .code-head{display:flex;gap:7px;padding:11px 14px;border-bottom:1px solid var(--border);}
+  .dot{width:10px;height:10px;border-radius:50%;}
+  .dot.r{background:#FF5F57;}.dot.y{background:#FEBC2E;}.dot.g{background:#28C840;}
+  .code-body{padding:20px 18px;color:var(--text-muted);white-space:pre;overflow-x:auto;}
+  .k-kw{color:var(--purple);}
+  .k-cls{color:var(--green);}
+  .k-str{color:#E3C878;}
+  .k-cmt{color:#5B6472;}
+  .k-fn{color:#6FB2FF;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding-block:64px;border-bottom:1px solid var(--border);scroll-margin-top:76px;}
+  section h2{font-size:26px;margin-bottom:8px;}
+  .section-sub{color:var(--text-muted);font-size:15px;margin-bottom:36px;max-width:60ch;}
+
+  /* ---------- ABOUT ---------- */
+  .about-body{color:var(--text-muted);font-size:16px;max-width:72ch;}
+  .about-body strong{color:var(--text);font-weight:600;}
+
+  /* ---------- EXPERIENCE (timeline) ---------- */
+  .timeline{position:relative;padding-left:28px;border-left:1px solid var(--border);}
+  .job{position:relative;padding-bottom:40px;}
+  .job:last-child{padding-bottom:0;}
+  .job::before{
+    content:"";position:absolute;left:-33.5px;top:4px;width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--green);
+  }
+  .job.past::before{border-color:var(--text-muted);}
+  .job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+  .job-role{font-family:var(--display);font-weight:700;font-size:17px;}
+  .job-meta{font-family:var(--mono);font-size:12px;color:var(--text-muted);}
+  .job-co{color:var(--green);font-size:14px;font-weight:600;margin-bottom:10px;}
+  .job ul{margin:0;padding-left:18px;color:var(--text-muted);font-size:14.5px;}
+  .job li{margin-bottom:5px;}
+  .earlier{margin-top:8px;border-top:1px dashed var(--border);padding-top:24px;}
+  .earlier-item{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:14px;color:var(--text-muted);padding-bottom:10px;}
+  .earlier-item b{color:var(--text);font-weight:600;}
+  .earlier-item span.meta{font-family:var(--mono);font-size:11.5px;}
+
+  /* ---------- SKILLS ---------- */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;}
+  @media (max-width:760px){ .skill-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .skill-grid{grid-template-columns:1fr;} }
+  .skill-cat h3{font-family:var(--mono);font-size:11.5px;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:13px;padding:6px 11px;border:1px solid var(--border);border-radius:5px;
+    color:var(--text-muted);background:var(--surface);
+  }
+  .chip-ico{width:14px;height:14px;flex-shrink:0;}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s ease;}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .proj-title{font-family:var(--display);font-weight:700;font-size:16.5px;}
+  .proj-org{font-family:var(--mono);font-size:11px;color:var(--text-muted);}
+  .proj-desc{color:var(--text-muted);font-size:14px;flex:1;}
+  .proj-link{font-family:var(--mono);font-size:12px;color:var(--green);}
+  .proj-link:hover{color:var(--purple);}
+  .proj-logo{width:42px;height:42px;border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+  .proj-logo.mark{width:64px;height:auto;border-radius:8px;object-fit:contain;box-shadow:none;background:#fff;padding:6px 9px;}
+
+  /* ---------- EDUCATION + CONTACT ---------- */
+  .edu-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline;}
+  .edu-name{font-family:var(--display);font-weight:700;font-size:17px;}
+  .edu-meta{font-family:var(--mono);font-size:12px;color:var(--text-muted);}
+
+  footer{padding-block:56px;}
+  .contact-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+  .contact-links{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:13.5px;}
+  .contact-links a{color:var(--text-muted);}
+  .contact-links a:hover{color:var(--green);}
+  .foot-note{color:var(--text-muted);font-size:12.5px;margin-top:28px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">rahulrajbarnwal</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+  </div>
+</header>
+
+<div class="photo-flow">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="avatar"><img src="assets/profile.png" alt="Rahul Raj Barnwal"></div>
+      <div class="eyebrow">Available · Open to opportunities</div>
+      <h1>Rahul Raj Barnwal —<br><span class="hl">Senior Android Engineer.</span></h1>
+      <p class="lede">9+ years shipping Kotlin &amp; Jetpack Compose apps with 10M+ downloads at Times Internet — ET Markets, Economic Times, and the shared infrastructure behind them.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:rahulrajbarnwal@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://github.com/rahulrajbarnwal" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/rahul-raj-barnwal-6b1929105" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">9+</div><div class="lbl">Years Android</div></div>
+        <div class="stat"><div class="num">10M+</div><div class="lbl">Downloads</div></div>
+        <div class="stat"><div class="num">99.5%+</div><div class="lbl">Crash-Free</div></div>
+      </div>
+    </div>
+    <div class="code-panel">
+      <div class="code-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+      <div class="code-body"><span class="k-kw">data class</span> <span class="k-cls">Engineer</span>(
+    <span class="k-fn">name</span>: String = <span class="k-str">"Rahul Raj Barnwal"</span>,
+    <span class="k-fn">role</span>: String = <span class="k-str">"Sr. Android Engineer"</span>,
+    <span class="k-fn">stack</span>: List&lt;String&gt; = <span class="k-kw">listOf</span>(
+        <span class="k-str">"Kotlin"</span>, <span class="k-str">"Compose"</span>,
+        <span class="k-str">"KMP"</span>, <span class="k-str">"Coroutines"</span>
+    ),
+    <span class="k-fn">experience</span>: Int = <span class="k-str">9</span>, <span class="k-cmt">// years</span>
+    <span class="k-fn">company</span>: String = <span class="k-str">"Times Internet"</span>,
+    <span class="k-fn">location</span>: String = <span class="k-str">"Noida, India"</span>,
+    <span class="k-fn">openToWork</span>: Boolean = <span class="k-kw">true</span>
+)
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">01 / About</div>
+    <h2>Building high-performance Android experiences at scale.</h2>
+    <p class="section-sub"></p>
+    <p class="about-body">
+      With <strong>9+ years</strong> as an Android Engineer, I'm passionate about crafting robust, user-centric
+      Android applications using <strong>Kotlin</strong> and <strong>Jetpack Compose</strong> with MVVM Clean
+      Architecture. I've led Android development for high-impact apps like <strong>ET Markets</strong>,
+      <strong>Economic Times</strong> and <strong>Domino's</strong>, achieving over <strong>99.5% crash-free
+      sessions</strong> and architecting reusable modules that cut development effort significantly — now used
+      across other apps too.
+      <br><br>
+      Day to day that means designing and shipping scalable Android solutions that millions of users rely on,
+      owning core modules for subscription, AI features and platform infrastructure, and leaning on agentic AI
+      tools (Claude Code, Cursor, Gemini) to move faster without cutting corners on quality — while partnering
+      closely with Product, Design, Business and Backend teams.
+    </p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">02 / Experience</div>
+    <h2>Nine years, one craft.</h2>
+    <p class="section-sub">Android-first from day one — from QA foundations to owning core infrastructure for a 10M+ download news &amp; markets app.</p>
+
+    <div class="timeline">
+      <div class="job">
+        <div class="job-top">
+          <div class="job-role">Senior Software Development Engineer</div>
+          <div class="job-meta">Mar 2022 — Present</div>
+        </div>
+        <div class="job-co">Times Internet · Noida, India · On-site</div>
+        <ul>
+          <li>Built and shipped features across the Economic Times and ET Markets Android apps, growing into leading Android development for both.</li>
+          <li>Led Android development for the ET Markets and Economic Times apps, serving 10M+ downloads.</li>
+          <li>Architected a reusable Subscription SDK, cutting development effort by ~40% across multiple apps.</li>
+          <li>Owned GrowthRx and Google Analytics integration app-wide for reliable event tracking.</li>
+          <li>Improved app stability to 99.5%+ crash-free sessions.</li>
+          <li>Partnered with Product, Design, Business and Backend teams on subscription, AI and monetisation features.</li>
+          <li>Uses Claude Code, Cursor and Gemini day-to-day, lifting development throughput 20–30%.</li>
+          <li>Leads code reviews and drives engineering best practices across the team.</li>
+        </ul>
+      </div>
+
+      <div class="job past">
+        <div class="job-top">
+          <div class="job-role">Senior Member of Technical Staff</div>
+          <div class="job-meta">Mar 2021 — Feb 2022</div>
+        </div>
+        <div class="job-co">Amanzi Technologies Pvt. Ltd. · Remote</div>
+        <ul>
+          <li>Collaborated with NEC Corporation on the ASHA government kiosk application, with online/offline data synchronisation.</li>
+          <li>Delivered Android features for VerifHire, an identity-verification platform.</li>
+          <li>Built secure, high-performance, offline-first Android architecture.</li>
+          <li>Picked up cross-platform development with React Native.</li>
+        </ul>
+      </div>
+
+      <div class="job past">
+        <div class="job-top">
+          <div class="job-role">Software Developer</div>
+          <div class="job-meta">Dec 2018 — Mar 2021</div>
+        </div>
+        <div class="job-co">Incaendo Technologies Pvt. Ltd. · Noida, India</div>
+        <ul>
+          <li>Developed end-to-end Android applications using Kotlin and MVP architecture.</li>
+          <li>Built and maintained the Domino's Pizza Indonesia Android app — features, enhancements, performance.</li>
+          <li>Contributed to multiple Jubilant FoodWorks Android applications; integrated REST APIs and responsive UI.</li>
+        </ul>
+      </div>
+
+      <div class="job past">
+        <div class="job-top">
+          <div class="job-role">Software Engineer</div>
+          <div class="job-meta">Apr 2017 — Nov 2018</div>
+        </div>
+        <div class="job-co">IndiCorp IT Solutions Pvt Ltd · Noida, India · On-site</div>
+        <ul>
+          <li>Collaborated closely with a cross-functional team to identify, reproduce and resolve software defects.</li>
+          <li>Built a strong foundation in the software development lifecycle, debugging and quality assurance practices before transitioning to Android development.</li>
+          <li>Performed functional and regression testing to ensure release quality.</li>
+        </ul>
+      </div>
+
+      <div class="job past">
+        <div class="job-top">
+          <div class="job-role">AR Developer (Intern)</div>
+          <div class="job-meta">Nov 2016 — Apr 2017</div>
+        </div>
+        <div class="job-co">Fusion · Finland · Remote</div>
+        <ul>
+          <li>Explored augmented reality (marker-based and marker-less) using Unity3D, Vuforia and Kudan.</li>
+          <li>Designed and developed "Fusion AR" — an AR-based application introducing the company's profile via a business card.</li>
+          <li>Gained hands-on grounding in Virtual and Augmented Reality concepts.</li>
+        </ul>
+      </div>
+
+      <div class="job past">
+        <div class="job-top">
+          <div class="job-role">Web Developer Intern</div>
+          <div class="job-meta">Jun 2015 — Jul 2015</div>
+        </div>
+        <div class="job-co">DishTV · Noida, India · On-site</div>
+        <ul>
+          <li>Developed the dishtv.lk website as a Web Development Intern, building responsive pages with HTML5, CSS3, JavaScript, jQuery and Bootstrap while gaining hands-on experience with Visual Studio, Adobe Photoshop and modern web design principles.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">03 / Skills</div>
+    <h2>The stack, end to end.</h2>
+    <p class="section-sub"></p>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <h3>Languages</h3>
+        <div class="chips"><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>Kotlin</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#AEB6C2" aria-hidden="true"><path d="M11.915 0 11.7.215C9.515 2.4 7.47 6.39 6.046 10.483c-1.064 1.024-3.633 2.81-3.711 3.551-.093.87 1.746 2.611 1.55 3.235-.198.625-1.304 1.408-1.014 1.939.1.188.823.011 1.277-.491a13.389 13.389 0 0 0-.017 2.14c.076.906.27 1.668.643 2.232.372.563.956.911 1.667.911.397 0 .727-.114 1.024-.264.298-.149.571-.33.91-.5.68-.34 1.634-.666 3.53-.604 1.903.062 2.872.39 3.559.704.687.314 1.15.664 1.925.664.767 0 1.395-.336 1.807-.9.412-.563.631-1.33.72-2.24.06-.623.055-1.32 0-2.066.454.45 1.117.604 1.213.424.29-.53-.816-1.314-1.013-1.937-.198-.624 1.642-2.366 1.549-3.236-.08-.748-2.707-2.568-3.748-3.586C16.428 6.374 14.308 2.394 12.13.215zm.175 6.038a2.95 2.95 0 0 1 2.943 2.942 2.95 2.95 0 0 1-2.943 2.943A2.95 2.95 0 0 1 9.148 8.98a2.95 2.95 0 0 1 2.942-2.942zM8.685 7.983a3.515 3.515 0 0 0-.145.997c0 1.951 1.6 3.55 3.55 3.55 1.95 0 3.55-1.598 3.55-3.55 0-.329-.046-.648-.132-.951.334.095.64.208.915.336a42.699 42.699 0 0 1 2.042 5.829c.678 2.545 1.01 4.92.846 6.607-.082.844-.29 1.51-.606 1.94-.315.431-.713.651-1.315.651-.593 0-.932-.27-1.673-.61-.741-.338-1.825-.694-3.792-.758-1.974-.064-3.073.293-3.821.669-.375.188-.659.373-.911.5s-.466.2-.752.2c-.53 0-.876-.209-1.16-.64-.285-.43-.474-1.101-.545-1.948-.141-1.693.176-4.069.823-6.614a43.155 43.155 0 0 1 1.934-5.783c.348-.167.749-.31 1.192-.425zm-3.382 4.362a.216.216 0 0 1 .13.031c-.166.56-.323 1.116-.463 1.665a33.849 33.849 0 0 0-.547 2.555 3.9 3.9 0 0 0-.2-.39c-.58-1.012-.914-1.642-1.16-2.08.315-.24 1.679-1.755 2.24-1.781zm13.394.01c.562.027 1.926 1.543 2.24 1.783-.246.438-.58 1.068-1.16 2.08a4.428 4.428 0 0 0-.163.309 32.354 32.354 0 0 0-.562-2.49 40.579 40.579 0 0 0-.482-1.652.216.216 0 0 1 .127-.03z"/></svg>Java</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>Android</h3>
+        <div class="chips">
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#3DDC84" aria-hidden="true"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg>Jetpack Compose</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#3DDC84" aria-hidden="true"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg>Android SDK</span>
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#3DDC84" aria-hidden="true"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg>Android Jetpack</span>
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#6750A4" aria-hidden="true"><path d="M11.9998 23.9997c-1.6545 0-3.218-.309-4.691-.927-1.4544-.6364-2.7269-1.4909-3.8179-2.5639-1.073-1.0905-1.9274-2.3634-2.5634-3.8179C.3085 15.2179 0 13.6545 0 12c0-1.6725.309-3.2364.927-4.6909.6365-1.4545 1.491-2.718 2.564-3.791C4.5818 2.4278 5.8543 1.5733 7.3087.9548c1.473-.6365 3.0365-.9545 4.691-.9545 1.673 0 3.2364.318 4.6909.955 1.4544.618 2.7179 1.4725 3.7909 2.563 1.091 1.073 1.945 2.3364 2.5634 3.7909C23.6815 8.7641 24 10.3275 24 12c0 1.655-.3185 3.218-.955 4.6909-.618 1.4545-1.4724 2.7274-2.5634 3.818-1.073 1.0729-2.3365 1.9274-3.791 2.5639-1.455.618-3.0179.927-4.6909.927zm-7.6364-5.8633V5.8636A9.4843 9.4843 0 0 0 2.755 8.7001C2.373 9.7365 2.1825 10.8365 2.1825 12s.1905 2.2725.5724 3.3274a9.5713 9.5713 0 0 0 1.609 2.809zm1.5-13.7727H18.163a9.4848 9.4848 0 0 0-2.836-1.609c-1.0549-.382-2.1639-.5725-3.3273-.5725-1.1635 0-2.2725.1905-3.327.5725a9.5713 9.5713 0 0 0-2.8094 1.609Zm6.1364 10.3637 4.1179-8.1818H7.9088Zm1.091 2.727h4.3633V8.7276Zm-6.5454 0h4.3634L6.5454 8.7276Zm8.7813 3.791c1.0545-.382 2-.918 2.836-1.609H5.8628a9.5713 9.5713 0 0 0 2.8094 1.609c1.0545.3819 2.1635.5724 3.327.5724 1.0543 0 2.1823-.1579 3.3274-.5725zm4.3089-3.109a9.5713 9.5713 0 0 0 1.609-2.809c.382-1.055.5724-2.164.5724-3.3274 0-1.1635-.1905-2.2635-.5724-3.3-.382-1.055-.918-1.9999-1.609-2.8364Z"/></svg>XML / Material UI</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Architecture</h3>
+        <div class="chips">
+          <span class="chip">MVVM</span><span class="chip">MVP</span>
+          <span class="chip">Clean Architecture</span><span class="chip">Repository Pattern</span><span class="chip">Modularization</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Async &amp; Data</h3>
+        <div class="chips">
+          <span class="chip">Coroutines</span><span class="chip">Flow</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#B7178C" aria-hidden="true"><path d="M7.402 2.343c-2.224.984-3.615 2.583-4.4 3.747-.852 1.268-1.184 2.319-1.184 2.328-.002.036.005-.017 0 .019-.246.7-.473 1.798-.473 1.807-.265 1.344-.142 2.593-.142 2.612l.029.246a9.58 9.58 0 01.132-1.012c.019-.133.37-2.016 1.694-3.511.142-.218 1.675-2.233 4.495-2.233.606 0 1.24.094 1.874.283h.019c.038.01.87.313 1.173.464.284.142.786.36.795.36h.02c2.715 1.325 5.062 1.75 5.081 1.76.672.114 1.278.17 1.817.17 1.079 0 1.855-.236 2.262-.69.237-.26.307-.559.293-.814.019-.985-.785-2.044-1.467-2.754a10.868 10.868 0 00-1.542-1.344c-2.044-1.514-4.23-2.28-6.52-2.28-2.347.009-3.937.832-3.956.842zm7.419 2.659c.284 0 .511.227.511.51a.509.509 0 01-.511.512.509.509 0 01-.511-.511c0-.284.227-.511.511-.511zm-6.605-1.94c.075 0 .123.019.142.019l3.227 1.003-.123.255-1.543-.482c-.548-.17-1.12-.351-1.656-.52-.01 0-.028-.01-.047-.01-.02 0-.048 0-.067.01-.293.075-1.097.359-1.334.785a.481.481 0 00-.038.378c0 .01.17.54.596 1.088l2.14-.104 1.428-.066-.142.293-3.549.17c-.53-.643-.738-1.286-.738-1.286C6.181 3.554 8.083 3.07 8.083 3.07c.045-.001.09-.006.133-.01zm11.223 15.747c2.177-.946 3.104-2.584 3.104-2.584 2.035-2.772 1.344-5.697 1.344-5.697-1.296 2.82-2.48 3.596-2.48 3.596 3.19-4.854.02-7.788.02-7.788C22.723 9.1 21 12.468 21 12.468c-1.448 3.048-3.502 4.136-3.502 4.136 2.29.426 3.975-1.117 3.975-1.117-3.284 3.549-6.842 3.379-6.842 3.379 1.495 1.675 3.738 1.533 3.738 1.533-2.934.69-5.688-.284-7.95-2.167-.425-.35-.832-.73-1.21-1.136-.144-.15-.28-.31-.417-.464-.047 1.751 1.779 3.379 1.779 3.379-2.29-.947-3.34-3-3.34-3s-1.543-2.631-.426-5.631c1.107-2.962 4.419-3.626 4.504-3.645-.251-.117-.644-.292-.814-.367-.293-.142-1.145-.455-1.145-.455a6.397 6.397 0 00-1.798-.274c-2.792 0-4.277 2.11-4.277 2.11-1.316 1.477-1.628 3.388-1.628 3.388-.37 1.827.028 3.748.028 3.748s.038.151.048.217c.303.72.69 1.43 1.145 2.101 2.46 3.672 6.454 4.94 6.454 4.94 5.914 2.006 9.955-.946 9.955-.946 3.72-2.555 4.467-5.508 4.467-5.508-3.01 2.338-4.306 2.12-4.306 2.12zM1.307 14.948a12.545 12.545 0 01-.36-1.78c-.01-.098-.025-.207-.037-.302 0 0-.133-1.287.151-2.697 0 0 .01-.038.02-.095.036-.203.093-.407.132-.577.085-.37.208-.814.33-1.174 0 0 1.307-4.287 5.726-6.245 0 0 1.524-.805 3.823-.862-.162-.16-.349-.329-.51-.435-1.08-.72-2.688-.956-3.663.057-.293.303-.54.634-.814.937-.312.34-.69.624-1.126.785-.378.142-.757.114-1.145.18-.397.066-.804.208-1.126.464-.35.284-.492.662-.53 1.097-.038.341-.028.691-.047 1.032-.048 1.003-.37 1.287-1.089 1.845-.303.227-.558.53-.747.852-.568 1.003.34 2.044.388 3.057.01.208-.01.416-.085.615-.076.217-.228.36-.35.54-.171.236-.285.52-.237.813.047.293.199.568.34.823.275.455.616.862.975 1.25.012.016.038.04.054.052l-.073-.232z"/></svg>RxJava</span>
+          <span class="chip">Retrofit</span><span class="chip">OkHttp</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#087CFA" aria-hidden="true"><path d="M8 0 0 8l8 8V8h8zm8 8v8H8l8 8 8-8z"/></svg>Ktor</span><span class="chip">Room</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#4FA8D8" aria-hidden="true"><path d="M21.678.521c-1.032-.92-2.28-.55-3.513.544a8.71 8.71 0 0 0-.547.535c-2.109 2.237-4.066 6.38-4.674 9.544.237.48.422 1.093.544 1.561a13.044 13.044 0 0 1 .164.703s-.019-.071-.096-.296l-.05-.146a1.689 1.689 0 0 0-.033-.08c-.138-.32-.518-.995-.686-1.289-.143.423-.27.818-.376 1.176.484.884.778 2.4.778 2.4s-.025-.099-.147-.442c-.107-.303-.644-1.244-.772-1.464-.217.804-.304 1.346-.226 1.478.152.256.296.698.422 1.186.286 1.1.485 2.44.485 2.44l.017.224a22.41 22.41 0 0 0 .056 2.748c.095 1.146.273 2.13.5 2.657l.155-.084c-.334-1.038-.47-2.399-.41-3.967.09-2.398.642-5.29 1.661-8.304 1.723-4.55 4.113-8.201 6.3-9.945-1.993 1.8-4.692 7.63-5.5 9.788-.904 2.416-1.545 4.684-1.931 6.857.666-2.037 2.821-2.912 2.821-2.912s1.057-1.304 2.292-3.166c-.74.169-1.955.458-2.362.629-.6.251-.762.337-.762.337s1.945-1.184 3.613-1.72C21.695 7.9 24.195 2.767 21.678.521m-18.573.543A1.842 1.842 0 0 0 1.27 2.9v16.608a1.84 1.84 0 0 0 1.835 1.834h9.418a22.953 22.953 0 0 1-.052-2.707c-.006-.062-.011-.141-.016-.2a27.01 27.01 0 0 0-.473-2.378c-.121-.47-.275-.898-.369-1.057-.116-.197-.098-.31-.097-.432 0-.12.015-.245.037-.386a9.98 9.98 0 0 1 .234-1.045l.217-.028c-.017-.035-.014-.065-.031-.097l-.041-.381a32.8 32.8 0 0 1 .382-1.194l.2-.019c-.008-.016-.01-.038-.018-.053l-.043-.316c.63-3.28 2.587-7.443 4.8-9.791.066-.069.133-.128.198-.194Z"/></svg>SQLite</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Platform &amp; SDKs</h3>
+        <div class="chips">
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#DD2C00" aria-hidden="true"><path d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z"/></svg>Firebase</span><span class="chip">GrowthRx</span>
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#E37400" aria-hidden="true"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></svg>Google Analytics</span><span class="chip">Subscription SDK design</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>AI-Assisted Dev</h3>
+        <div class="chips">
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#D97757" aria-hidden="true"><path d="M21 10.5h3v3h-3v3h-1.5v3H18v-3h-1.5v3H15v-3H9v3H7.5v-3H6v3H4.5v-3H3v-3H0v-3h3v-6h18Zm-15 0h1.5v-3H6Zm10.5 0H18v-3h-1.5z"/></svg>Claude Code</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#AEB6C2" aria-hidden="true"><path d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23"/></svg>Cursor</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#8E75B2" aria-hidden="true"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>Gemini</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Cross-platform</h3>
+        <div class="chips"><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>KMP (Kotlin Multiplatform)</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>CMP (Compose Multiplatform)</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>React Native</span></div>
+      </div>
+      <div class="skill-cat">
+        <h3>Practice</h3>
+        <div class="chips">
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#25A162" aria-hidden="true"><path d="M11.886 9.769c1.647 0 2.95.436 3.912 1.307.961.872 1.442 2.06 1.442 3.566 0 1.744-.548 3.107-1.643 4.09-1.088.977-2.638 1.465-4.65 1.465-1.826 0-3.26-.294-4.303-.883v-2.38a7.89 7.89 0 002.079.793c.782.186 1.509.28 2.18.28 1.184 0 2.086-.265 2.704-.794.619-.53.928-1.304.928-2.325 0-1.952-1.245-2.929-3.733-2.929-.35 0-.783.038-1.297.112-.514.067-.965.145-1.352.235l-1.174-.693.626-7.98H16.1v2.335H9.919l-.37 4.046c.262-.044.578-.096.95-.156.38-.06.843-.09 1.387-.09zM12 0C5.373 0 0 5.373 0 12a11.998 11.998 0 006.65 10.738v-3.675h.138c.01.004 4.86 2.466 8.021 0 3.163-2.468 1.62-5.785 1.08-6.557-.54-.771-3.317-2.083-5.708-1.851-2.391.231-2.391.308-2.391.308l.617-7.096 7.687-.074V.744A12 12 0 0011.999 0zm4.095.744V3.793l-7.688.074-.617 7.096s0-.077 2.391-.308c2.392-.232 5.169 1.08 5.708 1.851.54.772 2.083 4.089-1.08 6.557-3.16 2.467-8.013.004-8.02 0h-.14v3.675A12 12 0 0012 24c6.628 0 12-5.373 12-12A12.007 12.007 0 0016.35.83c-.085-.03-.17-.059-.255-.086zM6.299 22.556z"/></svg>Unit Testing</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#F03C2E" aria-hidden="true"><path d="M13.09 23.549a1.54 1.54 0 0 1-2.18 0L.451 13.089a1.54 1.54 0 0 1 0-2.179l7.191-7.19 2.733 2.733a1.85 1.85 0 0 0 .964 2.326v6.66a1.849 1.849 0 1 0 1.54 0V8.957l2.508 2.508a1.85 1.85 0 1 0 1.09-1.09l-2.634-2.634a1.85 1.85 0 0 0-2.378-2.377L8.73 2.63 10.91.451a1.54 1.54 0 0 1 2.179 0l10.459 10.46a1.54 1.54 0 0 1 0 2.179z"/></svg>Git</span>
+          <span class="chip">Code Review</span><span class="chip">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Tools</h3>
+        <div class="chips">
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#F24E1E" aria-hidden="true"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>Figma</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#AEB6C2" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</span>
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#FC6D26" aria-hidden="true"><path d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z"/></svg>GitLab</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#0052CC" aria-hidden="true"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.005-1.005zm5.723-5.756H5.736a5.215 5.215 0 0 0 5.215 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.758a1.001 1.001 0 0 0-1.001-1.001zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.057A5.215 5.215 0 0 0 24 12.483V1.005A1.001 1.001 0 0 0 23.013 0Z"/></svg>JIRA</span>
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#D24939" aria-hidden="true"><path d="M2.872 24h-.975a3.866 3.866 0 01-.07-.197c-.215-.666-.594-1.49-.692-2.154-.146-.984.78-1.039 1.374-1.465.915-.66 1.635-1.025 2.627-1.62.295-.179 1.182-.624 1.281-.829.201-.408-.345-.982-.49-1.3-.225-.507-.345-.937-.376-1.435-.824-.13-1.455-.627-1.844-1.185-.63-.925-1.066-2.635-.525-3.936.045-.103.254-.305.285-.463.06-.308-.105-.72-.12-1.048-.06-1.692.284-3.15 1.425-3.66.463-1.84 2.113-2.453 3.673-3.367.58-.342 1.224-.562 1.89-.807 2.372-.877 6.027-.712 7.994.783.836.633 2.176 1.97 2.656 2.939 1.262 2.555 1.17 6.825.287 9.934-.12.421-.29 1.032-.533 1.533-.168.35-.689 1.05-.625 1.36.064.314 1.19 1.17 1.432 1.395.434.422 1.26.975 1.324 1.5.07.557-.248 1.336-.41 1.875-.217.721-.436 1.441-.654 2.131H2.87zm11.104-3.54c-.545-.3-1.361-.622-2.065-.757-.87-.164-.78 1.188-.75 1.994.03.643.36 1.316.51 1.744.076.197.09.41.256.449.3.068 1.29-.326 1.575-.479.6-.328 1.064-.844 1.574-1.189.016-.17.016-.34.03-.508a2.648 2.648 0 00-1.095-.277c.314-.15.75-.15 1.035-.332l.016-.193c-.496-.03-.69-.254-1.021-.436zm7.454 2.935a17.78 17.78 0 00.465-1.752c.06-.287.215-.918.178-1.176-.059-.459-.684-.799-1.004-1.086-.584-.525-.95-.975-1.56-1.469-.249.375-.78.615-.983.914 1.447-.689 1.71 2.625 1.141 3.69.09.329.391.45.514.735l-.086.166h1.29c.013 0 .03 0 .044.014zm-6.634-.012c-.05-.074-.1-.135-.15-.209l-.301.195h.45zm2.77 0c.008-.209.018-.404.03-.598-.53.029-.825-.48-1.196-.527-.324-.045-.6.361-1.02.195-.095.105-.183.227-.284.316.154.18.295.375.424.584h.815c.014-.164.135-.285.3-.285.165 0 .284.121.284.27h.66zm2.116 0c-.314-.479-.947-.898-1.68-.555l-.03.541h1.71zm-8.51 0l-.104-.344c-.225-.72-.36-1.26-.405-1.68-.914-.436-1.875-.87-2.654-1.426-.15-.105-1.109-1.35-1.23-1.305-1.739.676-3.359 1.86-4.814 2.984.256.557.48 1.141.69 1.74h8.505zm8.265-2.113c-.029-.512-.164-1.56-.48-1.74-.66-.39-1.846.78-2.34.943.045.15.135.271.15.48.285-.074.645-.029.898.092-.299.03-.629.03-.824.164-.074.195.016.48-.029.764.69.197 1.5.303 2.385.332.164-.227.225-.645.211-1.082zm-4.08-.36c-.044.375.046.51.12.943 1.26.391 1.034-1.74-.135-.959zM8.76 19.5c-.45.457 1.27 1.082 1.814 1.115 0-.29.165-.564.135-.77-.65-.118-1.502-.042-1.945-.347zm5.565.215c0 .043-.061.03-.068.064.58.451 1.014.545 1.802.51.354-.262.67-.563 1.043-.807-.855.074-1.931.607-2.774.23zm3.42-17.726c-1.606-.906-4.35-1.591-6.076-.731-1.38.692-3.27 1.84-3.899 3.292.6 1.402-.166 2.686-.226 4.109-.018.757.36 1.42.391 2.242-.2.338-.825.38-1.26.356-.146-.729-.4-1.549-1.155-1.63-1.064-.116-1.845.764-1.89 1.683-.06 1.08.833 2.864 2.085 2.745.488-.046.608-.54 1.139-.54.285.57-.445.75-.523 1.154-.016.105.06.511.104.705.233.944.744 2.16 1.245 2.88.635.9 1.884 1.051 3.229 1.141.24-.525 1.125-.48 1.706-.346-.691-.27-1.336-.945-1.875-1.529-.615-.676-1.23-1.41-1.261-2.28 1.155 1.604 2.1 3 4.2 3.704 1.59.525 3.45-.254 4.664-1.109.51-.359.811-.93 1.17-1.439 1.35-1.936 1.98-4.71 1.846-7.394-.06-1.111-.06-2.221-.436-2.955-.389-.781-1.695-1.471-2.475-.781-.15-.764.63-1.23 1.545-.96-.66-.854-1.336-1.858-2.266-2.384zM13.58 14.896c.615 1.544 2.724 1.363 4.505 1.323-.084.194-.256.435-.465.515-.57.232-2.145.408-2.937-.012-.506-.27-.824-.873-1.102-1.227-.137-.172-.795-.608-.012-.609zm.164-.87c.893.464 2.52.517 3.731.48.066.267.066.593.068.913-1.55.08-3.386-.304-3.794-1.395h-.005zm6.675-.586c-.473.9-1.145 1.897-2.539 1.928-.023-.284-.045-.735 0-.904 1.064-.103 1.727-.646 2.543-1.017zm-.649-.667c-1.02.66-2.154 1.375-3.824 1.21-.351-.31-.485-1-.14-1.458.181.313.06.885.57.97.944.165 2.038-.579 2.73-.84.42-.713-.046-.976-.42-1.433-.782-.93-1.83-2.1-1.802-3.51.314-.224.346.346.391.45.404.96 1.424 2.175 2.174 3 .18.21.48.39.51.524.092.39-.254.854-.209 1.11zm-13.439-.675c-.314-.184-.393-.99-.768-1.01-.535-.03-.438 1.05-.436 1.68-.37-.33-.435-1.365-.164-1.89-.308-.15-.445.164-.618.284.22-1.59 2.34-.734 1.99.96zM4.713 5.995c-.685.756-.54 2.174-.459 3.188 1.244-.785 2.898.06 2.883 1.394.595-.016.223-.744.115-1.215-.353-1.528.592-3.187.041-4.59-1.064.084-1.939.52-2.578 1.215zm9.12 1.113c.307.562.404 1.148.84 1.57.195.19.574.424.387.95-.045.121-.365.391-.551.45-.674.195-2.254.03-1.721-.81.563.015 1.314.36 1.732-.045-.314-.524-.885-1.53-.674-2.13zm6.198-.013h.068c.33.668.6 1.375 1.004 1.965-.27.628-2.053 1.19-2.023.057.39-.17 1.05-.035 1.395-.25-.193-.556-.48-1.006-.434-1.771zm-6.927-1.617c-1.422-.33-2.131.592-2.56 1.553-.384-.094-.231-.615-.135-.883.255-.701 1.28-1.633 2.119-1.506.359.057.848.386.576.834zM9.642 1.593c-1.56.44-3.56 1.574-4.2 2.974.495-.07.84-.321 1.33-.351.186-.016.428.074.641.015.424-.104.78-1.065 1.102-1.41.31-.345.685-.496.94-.81.167-.09.409-.074.42-.33-.073-.075-.15-.135-.232-.105v.017z"/></svg>Jenkins</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">04 / Projects</div>
+    <h2>Apps in production, at scale.</h2>
+    <p class="section-sub"></p>
+    <div class="proj-grid">
+      <div class="proj-card" style="background:linear-gradient(160deg, rgba(58,91,156,0.20), var(--surface) 55%); border-color:rgba(58,91,156,0.45);">
+        <div class="proj-top">
+          <div>
+            <div class="proj-title">ET Markets — Stock Tools &amp; News</div>
+            <div class="proj-org">Times Internet</div>
+          </div>
+          <img class="proj-logo" src="assets/icons/et-markets.png" alt="ET Markets app icon">
+        </div>
+        <p class="proj-desc">Android app for market data, portfolio tools and financial news, part of a combined 10M+ downloads across ET Markets and Economic Times. Led development, owned the Subscription SDK and analytics integration, and hold it at 99.5%+ crash-free sessions.</p>
+        <a class="proj-link" href="https://play.google.com/store/apps/details?id=com.et.market" target="_blank" rel="noopener">View on Play Store ↗</a>
+      </div>
+      <div class="proj-card" style="background:linear-gradient(160deg, rgba(232,31,61,0.16), var(--surface) 55%); border-color:rgba(232,31,61,0.4);">
+        <div class="proj-top">
+          <div>
+            <div class="proj-title">Economic Times: Business News</div>
+            <div class="proj-org">Times Internet</div>
+          </div>
+          <img class="proj-logo" src="assets/icons/economic-times.png" alt="Economic Times app icon">
+        </div>
+        <p class="proj-desc">News and business-content app sharing core infrastructure with ET Markets. Built and shipped features across subscription, monetisation and platform modules.</p>
+        <a class="proj-link" href="https://play.google.com/store/apps/details?id=com.et.reader.activities" target="_blank" rel="noopener">View on Play Store ↗</a>
+      </div>
+      <div class="proj-card" style="background:linear-gradient(160deg, rgba(167,47,48,0.18), var(--surface) 55%); border-color:rgba(167,47,48,0.42);">
+        <div class="proj-top">
+          <div>
+            <div class="proj-title">Domino's Pizza Indonesia</div>
+            <div class="proj-org">Incaendo Technologies</div>
+          </div>
+          <img class="proj-logo" src="assets/icons/dominos.png" alt="Domino's Pizza Indonesia app icon">
+        </div>
+        <p class="proj-desc">End-to-end native Android app in Kotlin/MVP — ordering flows, REST API integration, responsive UI and performance work, alongside related Jubilant FoodWorks apps.</p>
+        <a class="proj-link" href="https://play.google.com/store/apps/details?id=com.phonegap.dominos" target="_blank" rel="noopener">View on Play Store ↗</a>
+      </div>
+      <div class="proj-card" style="background:linear-gradient(160deg, rgba(255,255,255,0.18), var(--surface) 55%); border-color:rgba(255,255,255,0.35);">
+        <div class="proj-top">
+          <div>
+            <div class="proj-title">Jubilant Achievers' Club</div>
+            <div class="proj-org">Jubilant FoodWorks · Incaendo Technologies</div>
+          </div>
+          <img class="proj-logo mark" src="assets/icons/jubilant.png" alt="Jubilant Achievers' Club app logo">
+        </div>
+        <p class="proj-desc">Android app for Jubilant FoodWorks' rewards/achievers program — REST API integration and responsive UI, part of the broader family of Jubilant FoodWorks apps built at Incaendo.</p>
+        <a class="proj-link" href="https://play.google.com/store/apps/details?id=com.jubilantachieversclub.android" target="_blank" rel="noopener">View on Play Store ↗</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <div>
+            <div class="proj-title">ASHA Kiosk Application</div>
+            <div class="proj-org">Amanzi Technologies × NEC Corporation</div>
+          </div>
+        </div>
+        <p class="proj-desc">Government kiosk application built with online/offline data synchronisation and an offline-first architecture for low-connectivity environments.</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <div>
+            <div class="proj-title">VerifHire</div>
+            <div class="proj-org">Amanzi Technologies × NEC Corporation</div>
+          </div>
+        </div>
+        <p class="proj-desc">Identity-verification platform — delivered Android features and enhancements for secure, high-performance verification flows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">05 / Education</div>
+    <div class="edu-row">
+      <div class="edu-name">Jaypee Institute of Information Technology (JIIT)</div>
+      <div class="edu-meta">Noida, India</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow">06 / Contact</div>
+    <div class="contact-grid">
+      <div>
+        <h2>Let's talk Android.</h2>
+        <p class="section-sub" style="margin-top:10px;">Open to senior Android / mobile architecture roles — happy to talk system design, Compose migrations, or how AI tooling fits into a mobile team.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:rahulrajbarnwal@gmail.com">rahulrajbarnwal@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rahul-raj-barnwal-6b1929105" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/rahulrajbarnwal" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↓</a>
+      </div>
+    </div>
+    <p class="foot-note">© 2026 Rahul Raj Barnwal</p>
+  </div>
+</footer>
+
+</body>
+</html>
