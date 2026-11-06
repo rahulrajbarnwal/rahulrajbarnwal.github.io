@@ -4,289 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Raj Barnwal — Senior Android Engineer</title>
-<meta name="description" content="Senior Android Engineer with 9+ years building Kotlin, Jetpack Compose and KMP apps at scale.">
+<meta name="description" content="Rahul Raj Barnwal — Senior Android Engineer focused on Kotlin, Jetpack Compose, Kotlin Multiplatform, mobile architecture and AI integration.">
+<meta property="og:title" content="Rahul Raj Barnwal — Senior Android Engineer">
+<meta property="og:description" content="Building scalable mobile experiences with Kotlin, Jetpack Compose, Kotlin Multiplatform and AI integration.">
+<meta name="theme-color" content="#0A0C10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script>
-  (function(){
-    var t=null;try{t=localStorage.getItem('theme');}catch(e){}
-    if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
-    document.documentElement.setAttribute('data-theme',t);
-  })();
-</script>
-<style>
-  :root{
-    --bg:#0A0C10;
-    --surface:#12151B;
-    --surface-2:#171B22;
-    --border:#242A33;
-    --text:#E7EBEE;
-    --text-muted:#8D98A6;
-    --green:#3DDC84;
-    --purple:#9B7BFF;
-    --purple-deep:#7F52FF;
-    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
-    --display: 'Sora', var(--sans);
-    --nav-bg: rgba(10,12,16,.86);
-    --chip-bg: rgba(255,255,255,.04);
-    --on-accent: #06170D;
-    --shadow: 0 30px 80px rgba(0,0,0,.5);
-    --bg-blur: 6px;
-    --glass: rgba(18,21,27,.55);
-    --glass-border: rgba(255,255,255,.08);
-    --shade-top: rgba(10,12,16,.72);
-    --shade-mid: rgba(10,12,16,.86);
-    --shade-soft: rgba(10,12,16,.35);
-    color-scheme: dark;
-  }
-  :root[data-theme="light"]{
-    --bg:#F6F7F9;
-    --surface:#FFFFFF;
-    --surface-2:#EEF1F4;
-    --border:#DDE2E8;
-    --text:#12161C;
-    --text-muted:#556070;
-    --green:#16924D;
-    --purple:#6B46E5;
-    --purple-deep:#5A36D6;
-    --nav-bg: rgba(246,247,249,.88);
-    --chip-bg: #FFFFFF;
-    --on-accent: #FFFFFF;
-    --shadow: 0 24px 60px rgba(18,22,28,.14);
-    --bg-blur: 8px;
-    --glass: rgba(255,255,255,.65);
-    --glass-border: rgba(18,22,28,.08);
-    --shade-top: rgba(246,247,249,.78);
-    --shade-mid: rgba(246,247,249,.90);
-    --shade-soft: rgba(246,247,249,.40);
-    color-scheme: light;
-  }
-  body{transition:background-color .25s ease,color .25s ease;}
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--sans);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;}
-  [hidden]{display:none!important;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1180px;margin:0 auto;padding-inline:24px;}
-  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-0.01em;text-wrap:balance;margin:0;}
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12.5px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--green);
-    display:flex;align-items:center;gap:10px;
-    margin-bottom:14px;
-  }
-  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(61,220,132,.15);}
-
-  /* ---------- NAV ---------- */
-  header.nav{
-    position:sticky;top:0;z-index:50;
-    background:var(--nav-bg);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding-block:14px;}
-  .brand{font-family:var(--display);font-weight:700;font-size:19px;color:var(--text);}
-  .nav-right{display:flex;align-items:center;gap:22px;}
-  .theme-toggle{
-    width:42px;height:42px;border-radius:50%;border:1px solid var(--green);background:transparent;
-    color:var(--green);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
-    transition:background .15s ease;
-  }
-  .theme-toggle:hover{background:rgba(61,220,132,.12);}
-  .theme-toggle svg{width:18px;height:18px;}
-  .theme-toggle .ico-sun{display:none;}
-  :root[data-theme="light"] .theme-toggle .ico-sun{display:block;}
-  :root[data-theme="light"] .theme-toggle .ico-moon{display:none;}
-  .brand span{color:var(--green);}
-  nav.links{display:flex;gap:26px;font-size:15px;font-weight:500;color:var(--text-muted);}
-  nav.links a:hover{color:var(--text);}
-  .nav-cta{
-    font-family:var(--mono);font-size:13px;padding:8px 14px;border:1px solid var(--border);
-    border-radius:6px;color:var(--text);
-  }
-  .nav-cta:hover{border-color:var(--green);color:var(--green);}
-  @media (max-width:720px){ nav.links{display:none;} }
-
-  /* ---------- HERO ---------- */
-  /* Background photo with a frosted-glass + shade layer above it */
-  .photo-flow{position:relative;isolation:isolate;background-color:var(--bg);overflow:hidden;}
-  .photo-flow::before{
-    content:"";position:absolute;inset:-24px;z-index:-2;
-    background:url('assets/hero/background.jpg') top center / 100% auto no-repeat;
-    filter:blur(var(--bg-blur)) saturate(.9);
-    transform:scale(1.04);
-  }
-  .photo-flow::after{
-    content:"";position:absolute;inset:0;z-index:-1;
-    background:
-      radial-gradient(120% 70% at 75% 0%, transparent 0%, var(--shade-soft) 55%),
-      linear-gradient(180deg, var(--shade-top) 0%, var(--shade-mid) 45%, var(--bg) 100%);
-  }
-  .hero{padding-block:28px 48px;border-bottom:0;}
-  .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:start;}
-  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:40px;} }
-  .hero-id{display:flex;align-items:center;gap:20px;margin-bottom:28px;}
-  .app-tile{
-    width:76px;height:76px;flex:0 0 76px;border-radius:20px;color:var(--green);
-    background:rgba(61,220,132,.10);border:1px solid rgba(61,220,132,.35);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .app-tile svg{width:42px;height:42px;}
-  .hero h1{font-size:clamp(38px,5.4vw,60px);line-height:1.05;font-weight:800;letter-spacing:-0.02em;}
-  .hero h1 .hl{color:var(--green);}
-  .hero .role{font-size:clamp(17px,2vw,20px);font-weight:600;color:var(--green);margin:8px 0 0;}
-  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;}
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
-    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:var(--chip-bg);border:1px solid var(--border);font-size:14px;font-weight:500;color:var(--text);
-  }
-  .pill svg{width:15px;height:15px;color:var(--green);}
-  .hero p.lede{color:var(--text-muted);font-size:17.5px;line-height:1.75;max-width:60ch;margin:0 0 14px;}
-  .hero p.lede strong{color:var(--text);font-weight:600;}
-  .co-chip{
-    display:inline-flex;align-items:center;gap:8px;padding:2px 12px 2px 4px;margin:0 3px;border-radius:8px;
-    background:var(--chip-bg);border:1px solid var(--border);color:var(--text);font-weight:600;vertical-align:middle;
-  }
-  .co-chip .mk{width:22px;height:22px;border-radius:5px;background:var(--text);color:var(--bg);font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);}
-  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;}
-  .btn{
-    font-family:var(--sans);font-size:15px;font-weight:600;
-    min-height:48px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;
-    border:1px solid var(--green);color:var(--green);transition:background .15s ease;
-  }
-  .btn svg{width:17px;height:17px;}
-  .btn.primary{background:var(--green);color:var(--on-accent);}
-  .btn.primary:hover{filter:brightness(.93);}
-  .btn.ghost:hover{background:rgba(61,220,132,.10);}
-
-  .portrait{border-radius:24px;padding:4px;background:var(--green);box-shadow:var(--shadow);max-width:100%;}
-  .portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:20px;}
-  .hero-side{justify-self:end;width:270px;}
-  @media (max-width:900px){ .hero-side{justify-self:start;width:255px;} }
-  .contact-card{display:flex;flex-direction:column;gap:12px;margin-top:24px;padding-left:4px;font-size:16px;color:var(--text);}
-  .contact-card .row{display:flex;align-items:center;gap:12px;}
-  .contact-card .row svg{width:19px;height:19px;color:var(--green);flex-shrink:0;}
-  .contact-card a.row:hover{color:var(--green);}
-  .social{display:flex;gap:22px;margin-top:8px;}
-  .social a{display:inline-flex;align-items:center;gap:7px;color:var(--green);font-weight:500;text-decoration:underline;text-underline-offset:4px;}
-  .social svg{width:17px;height:17px;}
-
-  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-bottom:64px;}
-  @media (max-width:900px){ .stat-row{grid-template-columns:repeat(2,1fr);} }
-  .stat{background:var(--glass);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--glass-border);border-radius:18px;padding:30px 18px;text-align:center;}
-  .stat .num{font-family:var(--display);font-size:clamp(34px,4vw,46px);font-weight:800;line-height:1;color:var(--green);}
-  .stat .lbl{font-size:15px;color:var(--text-muted);margin-top:10px;}
-  .stats-section{border-bottom:1px solid var(--border);padding-block:0;}
-
-  /* Kotlin code panel */
-  .code-panel{
-    background:var(--surface);border:1px solid var(--border);border-radius:10px;
-    font-family:var(--mono);font-size:13.5px;overflow:hidden;
-  }
-  .code-head{display:flex;gap:7px;padding:11px 14px;border-bottom:1px solid var(--border);}
-  .dot{width:10px;height:10px;border-radius:50%;}
-  .dot.r{background:#FF5F57;}.dot.y{background:#FEBC2E;}.dot.g{background:#28C840;}
-  .code-body{padding:20px 18px;color:var(--text-muted);white-space:pre;overflow-x:auto;}
-  .k-kw{color:var(--purple);}
-  .k-cls{color:var(--green);}
-  .k-str{color:#E3C878;}
-  .k-cmt{color:#5B6472;}
-  .k-fn{color:#6FB2FF;}
-
-  /* ---------- SECTION SHELL ---------- */
-  section{padding-block:64px;border-bottom:1px solid var(--border);scroll-margin-top:76px;}
-  section h2{font-size:26px;margin-bottom:8px;}
-  .section-sub{color:var(--text-muted);font-size:15px;margin-bottom:36px;max-width:60ch;}
-
-  /* ---------- ABOUT ---------- */
-  .about-body{color:var(--text-muted);font-size:16px;line-height:1.75;max-width:72ch;margin:0 0 18px;}
-  .about-body:last-child{margin-bottom:0;}
-  .about-body strong{color:var(--text);font-weight:600;}
-
-  /* ---------- EXPERIENCE (timeline) ---------- */
-  .timeline{position:relative;padding-left:28px;border-left:1px solid var(--border);}
-  .job{position:relative;padding-bottom:40px;}
-  .job:last-child{padding-bottom:0;}
-  .job::before{
-    content:"";position:absolute;left:-33.5px;top:4px;width:9px;height:9px;border-radius:50%;
-    background:var(--bg);border:2px solid var(--green);
-  }
-  .job.past::before{border-color:var(--text-muted);}
-  .job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
-  .job-role{font-family:var(--display);font-weight:700;font-size:17px;}
-  .job-meta{font-family:var(--mono);font-size:12px;color:var(--text-muted);}
-  .job-co{color:var(--green);font-size:14px;font-weight:600;margin-bottom:10px;}
-  .job ul{margin:0;padding-left:18px;color:var(--text-muted);font-size:14.5px;}
-  .job li{margin-bottom:5px;}
-  .earlier{margin-top:8px;border-top:1px dashed var(--border);padding-top:24px;}
-  .earlier-item{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:14px;color:var(--text-muted);padding-bottom:10px;}
-  .earlier-item b{color:var(--text);font-weight:600;}
-  .earlier-item span.meta{font-family:var(--mono);font-size:11.5px;}
-
-  /* ---------- SKILLS ---------- */
-  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;}
-  @media (max-width:760px){ .skill-grid{grid-template-columns:1fr 1fr;} }
-  @media (max-width:520px){ .skill-grid{grid-template-columns:1fr;} }
-  .skill-cat h3{font-family:var(--mono);font-size:11.5px;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{
-    display:inline-flex;align-items:center;gap:7px;
-    font-size:13px;padding:6px 11px;border:1px solid var(--border);border-radius:5px;
-    color:var(--text-muted);background:var(--surface);
-  }
-  .chip-ico{width:14px;height:14px;flex-shrink:0;}
-
-  /* ---------- PROJECTS ---------- */
-  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
-  .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .15s ease;}
-  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
-  .proj-title{font-family:var(--display);font-weight:700;font-size:16.5px;}
-  .proj-org{font-family:var(--mono);font-size:11px;color:var(--text-muted);}
-  .proj-desc{color:var(--text-muted);font-size:14px;flex:1;}
-  .proj-link{font-family:var(--mono);font-size:12px;color:var(--green);}
-  .proj-link:hover{color:var(--purple);}
-  .proj-logo{width:42px;height:42px;border-radius:11px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.4);}
-  .proj-logo.mark{width:64px;height:auto;border-radius:8px;object-fit:contain;box-shadow:none;background:#fff;padding:6px 9px;}
-
-  /* ---------- EDUCATION + CONTACT ---------- */
-  .edu-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline;}
-  .edu-name{font-family:var(--display);font-weight:700;font-size:17px;}
-  .edu-meta{font-family:var(--mono);font-size:12px;color:var(--text-muted);}
-
-  footer{padding-block:56px;}
-  .contact-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
-  .contact-links{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:13.5px;}
-  .contact-links a{color:var(--text-muted);}
-  .contact-links a:hover{color:var(--green);}
-  .foot-note{color:var(--text-muted);font-size:12.5px;margin-top:28px;}
-</style>
+<script src="js/theme-init.js"></script>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top">Rahul Raj Barnwal</a>
-    <nav class="links">
+    <nav class="links" id="primaryNav">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
+      <a href="#ai-integration-case-study">Case Studies</a>
+      <a href="#engineering">Engineering</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menu</button>
     <div class="nav-right">
       <a class="nav-cta" href="resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
@@ -306,7 +48,7 @@
         <div class="app-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 0 1 16 0z"/><path d="m7 9-2-3"/><path d="m17 9 2-3"/><circle cx="9" cy="12.5" r=".7" fill="currentColor"/><circle cx="15" cy="12.5" r=".7" fill="currentColor"/></svg></div>
         <div>
           <h1>Rahul <span class="hl">Raj Barnwal</span></h1>
-          <p class="role">Senior Android Engineer</p>
+          <p class="role">Senior Android Engineer · Mobile Architect · AI Integration &amp; Assisted Developer</p>
         </div>
       </div>
 
@@ -315,15 +57,17 @@
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>Kotlin</span>
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Jetpack Compose</span>
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="9" height="16" rx="2"/><rect x="13" y="4" width="9" height="16" rx="2"/></svg>KMP</span>
+        <span class="pill">Flutter</span>
       </div>
 
       <p class="lede"><strong>9+ years</strong> of experience building <strong>high-scale consumer Android apps</strong> with Kotlin &amp; Jetpack Compose, MVVM and Clean Architecture.</p>
-      <p class="lede">Currently at <span class="co-chip"><span class="mk">TI</span>Times Internet</span> leading Android for <strong>ET Markets</strong> &amp; <strong>Economic Times</strong> — and the shared infrastructure behind them.</p>
+      <p class="lede">Experience includes <span class="co-chip"><span class="mk">TI</span>Times Internet</span>, where I worked on <strong>ET Markets</strong> &amp; <strong>Economic Times</strong> and shared mobile infrastructure.</p>
 
       <div class="cta-row">
         <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Download CV</a>
         <a class="btn ghost" href="#experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experience</a>
         <a class="btn ghost" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15 9 12a22 22 0 0 1 2-4A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/></svg>Projects</a>
+        <a class="btn ghost" href="#case-studies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 5.5v15.5"/><path d="M8 7h8M8 11h8"/></svg>Case Studies</a>
       </div>
     </div>
 
@@ -355,9 +99,35 @@
     <div class="eyebrow">01 / About</div>
     <h2>Building high-performance Android &amp; multiplatform<br>experiences at scale.</h2>
     <p class="section-sub"></p>
-    <p class="about-body">I'm an Android Engineer with <strong>9+ years</strong> of experience building robust, user-centric apps with <strong>Kotlin</strong>, <strong>Jetpack Compose</strong> and MVVM Clean Architecture. I've led Android development for high-impact apps like <strong>ET Markets</strong>, <strong>The Economic Times</strong> and <strong>Domino's</strong>, achieving over <strong>99.5% crash-free sessions</strong>. I also architected reusable modules that significantly reduced development effort and have since been adopted by other apps across the organization.</p>
-    <p class="about-body">More recently, I've been working with <strong>Kotlin Multiplatform (KMP)</strong> and <strong>Compose Multiplatform (CMP)</strong> to share business logic and UI across Android and iOS, which speeds up delivery and keeps the experience consistent on both platforms.</p>
-    <p class="about-body">Day to day, I design and ship scalable solutions that millions of users rely on, and I own core modules for subscriptions, AI features and platform infrastructure. I use agentic AI tools like Claude Code, Cursor and Gemini to move faster without compromising on quality. I work closely with Product, Design, Business and Backend teams to turn ideas into reliable, well-crafted features.</p>
+    <div class="about-layout">
+      <div class="about-copy">
+        <p class="about-body">I'm an Android Engineer with <strong>9+ years</strong> of experience building robust, user-centric apps with <strong>Kotlin</strong>, <strong>Jetpack Compose</strong> and MVVM Clean Architecture. I've led Android development for high-impact apps like <strong>ET Markets</strong>, <strong>The Economic Times</strong> and <strong>Domino's</strong>, achieving over <strong>99.5% crash-free sessions</strong>. I also architected reusable modules that significantly reduced development effort and have since been adopted by other apps across the organization.</p>
+        <p class="about-body">My cross-platform experience includes <strong>Kotlin Multiplatform (KMP)</strong>, <strong>Compose Multiplatform (CMP)</strong>, and <strong>Flutter with Dart</strong>. I have worked on shared Kotlin modules for business logic and infrastructure, as well as Flutter-based enterprise applications, including an offline-first government kiosk solution.</p>
+        <p class="about-body">Day to day, I design and ship scalable solutions that millions of users rely on, and I own core modules for subscriptions, AI features and platform infrastructure. I use agentic AI tools like Claude Code, Cursor and Gemini to move faster without compromising on quality. I work closely with Product, Design, Business and Backend teams to turn ideas into reliable, well-crafted features.</p>
+      </div>
+      <aside class="about-architecture" aria-label="Illustration of mobile engineering technologies connected through shared services">
+        <div class="about-architecture-head"><span class="live-dot"></span> MOBILE ENGINEERING ECOSYSTEM</div>
+        <svg class="ecosystem-svg" viewBox="0 0 520 390" role="img" aria-labelledby="ecosystem-title ecosystem-desc">
+          <title id="ecosystem-title">Connected mobile engineering ecosystem</title>
+          <desc id="ecosystem-desc">Android, Kotlin Multiplatform, Flutter, backend services and AI integrations connected as one mobile engineering ecosystem.</desc>
+          <defs>
+            <linearGradient id="ecoLine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3DDC84"/><stop offset="1" stop-color="#8B7CFF"/></linearGradient>
+            <filter id="ecoGlow"><feGaussianBlur stdDeviation="3.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <g class="eco-lines" fill="none" stroke="url(#ecoLine)" stroke-width="2.2" stroke-linecap="round">
+            <path d="M260 192 L130 92"/><path d="M260 192 L390 92"/><path d="M260 192 L130 292"/><path d="M260 192 L390 292"/>
+            <path d="M130 92 L390 92" opacity=".25"/><path d="M130 292 L390 292" opacity=".25"/>
+          </g>
+          <g class="eco-packets" fill="#3DDC84" filter="url(#ecoGlow)"><circle r="4"><animateMotion dur="3.8s" repeatCount="indefinite" path="M130 92 L260 192"/></circle><circle r="4"><animateMotion dur="4.4s" begin="-.9s" repeatCount="indefinite" path="M390 92 L260 192"/></circle><circle r="4"><animateMotion dur="4.1s" begin="-1.7s" repeatCount="indefinite" path="M130 292 L260 192"/></circle><circle r="4"><animateMotion dur="4.7s" begin="-2.2s" repeatCount="indefinite" path="M390 292 L260 192"/></circle></g>
+          <g class="eco-node eco-node-android"><rect x="48" y="48" width="164" height="88" rx="15"/><text x="130" y="84" class="eco-kicker">MOBILE</text><text x="130" y="108" class="eco-label">Android</text></g>
+          <g class="eco-node eco-node-kmp"><rect x="308" y="48" width="164" height="88" rx="15"/><text x="390" y="84" class="eco-kicker">SHARED CODE</text><text x="390" y="108" class="eco-label">KMP · CMP</text></g>
+          <g class="eco-node eco-node-flutter"><rect x="48" y="248" width="164" height="88" rx="15"/><text x="130" y="284" class="eco-kicker">CROSS-PLATFORM</text><text x="130" y="308" class="eco-label">Flutter</text></g>
+          <g class="eco-node eco-node-ai"><rect x="308" y="248" width="164" height="88" rx="15"/><text x="390" y="284" class="eco-kicker">INTELLIGENCE</text><text x="390" y="308" class="eco-label">AI · LLM</text></g>
+          <g class="eco-core"><circle cx="260" cy="192" r="48"/><circle class="eco-core-pulse" cx="260" cy="192" r="57"/><text x="260" y="187" class="eco-core-small">MOBILE</text><text x="260" y="207" class="eco-core-label">ENGINEERING</text></g>
+          <text x="260" y="374" class="eco-footer">CONNECTED SYSTEMS · SHARED SERVICES · SCALABLE APPS</text>
+        </svg>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -371,9 +141,10 @@
       <div class="job">
         <div class="job-top">
           <div class="job-role">Senior Software Development Engineer</div>
-          <div class="job-meta">Mar 2022 — Present</div>
+          <div class="job-meta">Experience</div>
         </div>
         <div class="job-co">Times Internet · Noida, India · On-site</div>
+        <div class="job-meta">Mar 2022 — Present</div>
         <ul>
           <li>Built and shipped features across the Economic Times and ET Markets Android apps, growing into leading Android development for both.</li>
           <li>Led Android development for the ET Markets and Economic Times apps, serving 10M+ downloads.</li>
@@ -396,7 +167,7 @@
           <li>Collaborated with NEC Corporation on the ASHA government kiosk application, with online/offline data synchronisation.</li>
           <li>Delivered Android features for VerifHire, an identity-verification platform.</li>
           <li>Built secure, high-performance, offline-first Android architecture.</li>
-          <li>Picked up cross-platform development with React Native.</li>
+          <li>Contributed to cross-platform mobile development using Flutter and Dart, including an offline-first ASHA government kiosk application.</li>
         </ul>
       </div>
 
@@ -490,7 +261,7 @@
         <h3>Platform &amp; SDKs</h3>
         <div class="chips">
           <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#DD2C00" aria-hidden="true"><path d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z"/></svg>Firebase</span><span class="chip">GrowthRx</span>
-          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#E37400" aria-hidden="true"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></svg>Google Analytics</span><span class="chip">Subscription SDK design</span>
+          <span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#E37400" aria-hidden="true"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></svg>Google Analytics</span><span class="chip">Subscription SDK design</span><span class="chip">LLM / Gemini API integration</span>
         </div>
       </div>
       <div class="skill-cat">
@@ -501,7 +272,7 @@
       </div>
       <div class="skill-cat">
         <h3>Cross-platform</h3>
-        <div class="chips"><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>KMP (Kotlin Multiplatform)</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>CMP (Compose Multiplatform)</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>React Native</span></div>
+        <div class="chips"><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>KMP (Kotlin Multiplatform)</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#7F52FF" aria-hidden="true"><path d="M24 24H0V0h24L12 12Z"/></svg>CMP (Compose Multiplatform)</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#54C5F8" aria-hidden="true"><path d="M12 2 2.5 19h5.1L12 10.9 16.4 19h5.1L12 2z"/></svg>Flutter</span><span class="chip"><svg class="chip-ico" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>React Native</span></div>
       </div>
       <div class="skill-cat">
         <h3>Practice</h3>
@@ -522,9 +293,236 @@
   </div>
 </section>
 
+<section id="ai-integration-case-study" class="case-study">
+  <div class="wrap">
+    <div class="eyebrow">04 / Case Study</div>
+    <h2>Bringing LLM capabilities into mobile apps with Gemini API.</h2>
+    <p class="section-sub">Practical LLM integration experience across a live application and proof-of-concept work, with an independent Expense Tracker project demonstrating the exploration.</p>
+    <div class="case-grid">
+      <article class="case-panel">
+        <h3>Integration focus</h3>
+        <ul>
+          <li>Worked on Gemini API integration in a live application, bringing LLM capabilities into an existing product experience.</li>
+          <li>Built proof-of-concept work to explore and validate additional LLM use cases.</li>
+          <li>Used a personal Expense Tracker project to demonstrate and further explore Gemini API integration.</li>
+          <li>Applied practical mobile API integration experience while exploring how model responses can support app features.</li>
+        </ul>
+        <div class="case-tags"><span>LLM Integration</span><span>Gemini API</span><span>Generative AI</span><span>Live App Integration</span><span>POC</span></div>
+        <p style="margin-top:16px"><a href="https://github.com/rahulrajbarnwal/Expense" target="_blank" rel="noopener noreferrer">View Expense Tracker on GitHub ↗</a></p>
+      </article>
+      <aside class="case-panel">
+        <h3>High-level integration flow</h3>
+        <div class="arch-flow" role="img" aria-label="Conceptual LLM integration flow from app feature to request handling, Gemini API and model response">
+          <div class="arch-node">Application feature / user input</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">LLM API integration layer</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Gemini API</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Model response → application UI</div>
+        </div>
+        <p style="margin-top:18px">Conceptual flow showing the app-to-Gemini interaction. The live application and POC implementations may differ in their internal details.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="kmp-case-study" class="case-study">
+  <div class="wrap">
+    <div class="eyebrow">05 / Case Study</div>
+    <h2>Sharing mobile foundations with Kotlin Multiplatform.</h2>
+    <p class="section-sub">A production KMP initiative for the ET Newspaper app, focused on sharing core business logic and platform-independent infrastructure while keeping native platform experiences.</p>
+    <div class="case-grid">
+      <article class="case-panel">
+        <h3>Engineering challenge</h3>
+        <p>Maintain consistent business rules and data handling across mobile platforms without duplicating core implementation. The shared layer needed a clear boundary from platform-specific UI and integrations.</p>
+        <h3>Implementation</h3>
+        <ul>
+          <li>Structured shared modules for business logic, models and networking.</li>
+          <li>Used Ktor for networking and Koin for dependency injection.</li>
+          <li>Used SQLDelight for shared persistence and Multiplatform Settings for key-value preferences.</li>
+          <li>Used Kotlin Coroutines and Flow for asynchronous work and reactive data streams.</li>
+          <li>Kept platform-specific concerns behind platform boundaries.</li>
+        </ul>
+        <div class="case-tags"><span>Kotlin Multiplatform</span><span>Ktor</span><span>Koin</span><span>SQLDelight</span><span>Coroutines</span><span>Flow</span></div>
+      </article>
+      <aside class="case-panel">
+        <h3>High-level module flow</h3>
+        <div class="arch-flow" aria-label="KMP architecture flow">
+          <div class="arch-node">Android / iOS app layer</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Shared domain &amp; data logic</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Ktor · SQLDelight · Settings</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Remote APIs &amp; local storage</div>
+        </div>
+        <p style="margin-top:18px;font-size:13px">This is a conceptual overview of the shared-layer boundaries, not a repository-specific module diagram.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<section id="subscription-case-study" class="case-study">
+  <div class="wrap">
+    <div class="eyebrow">06 / Case Study</div>
+    <h2>Turning subscription flows into a reusable Android SDK.</h2>
+    <p class="section-sub">A shared subscription foundation for Times Internet apps, designed to reduce duplicated implementation and keep premium access behavior consistent.</p>
+    <div class="case-grid">
+      <article class="case-panel">
+        <h3>Problem</h3>
+        <p>Subscription journeys involve several connected concerns: plan presentation, purchase handling, entitlement checks and access management. Repeating these implementations across apps increased maintenance and duplicated development effort.</p>
+        <h3>What I built</h3>
+        <ul>
+          <li>Architected the ET Prime subscription flow covering entitlement checks, plan management and payments.</li>
+          <li>Modularized the implementation into a reusable Subscription SDK.</li>
+          <li>Designed the SDK for adoption by multiple Times Internet applications.</li>
+          <li>Worked with product and backend teams to support subscription and monetization requirements.</li>
+        </ul>
+        <div class="case-tags"><span>Kotlin</span><span>Android SDK</span><span>Modularization</span><span>Google Play Billing</span><span>Entitlements</span></div>
+      </article>
+      <aside class="case-panel">
+        <h3>Impact</h3>
+        <div class="arch-flow">
+          <div class="arch-node">ET Prime subscription experience</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Reusable Subscription SDK</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">5+ Times Internet applications</div>
+        </div>
+        <p style="margin-top:18px">Reduced duplicated development effort by approximately <strong>40%</strong> and enabled reuse across five or more applications.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="networking-case-study" class="case-study">
+  <div class="wrap">
+    <div class="eyebrow">07 / Case Study</div>
+    <h2>Building a shared networking layer for mobile apps.</h2>
+    <p class="section-sub">A reusable networking module bringing transport, serialization and caching capabilities into a shared layer for multiple mobile applications.</p>
+    <div class="case-grid">
+      <article class="case-panel">
+        <h3>Engineering focus</h3>
+        <ul>
+          <li>Created a custom networking library module used across multiple applications.</li>
+          <li>Implemented response caching to avoid unnecessary repeat network work.</li>
+          <li>Added Protobuf serialization to reduce payload size.</li>
+          <li>Worked with Ktor and OkHttp alongside Cronet for HTTP networking and transport integration.</li>
+          <li>Used Cronet transport to improve request behavior, particularly on slower connections.</li>
+          <li>Worked on error handling across feed and networking layers, contributing to a 20% reduction in crash rates.</li>
+        </ul>
+        <div class="case-tags"><span>Kotlin</span><span>Ktor</span><span>OkHttp</span><span>Cronet</span><span>Protobuf</span><span>HTTP</span><span>Caching</span><span>Networking SDK</span></div>
+      </article>
+      <aside class="case-panel">
+        <h3>Networking SDK architecture</h3>
+        <div class="arch-flow" role="img" aria-label="Conceptual networking SDK architecture from application features through a shared SDK, networking clients, caching and serialization to remote APIs">
+          <div class="arch-node">Android applications / feature modules</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Shared Networking SDK API</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Networking clients · Ktor / OkHttp / Cronet</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Caching · Protobuf serialization · Error handling</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Remote APIs</div>
+        </div>
+        <p style="margin-top:18px">Conceptual architecture based on the networking capabilities described here; exact internal module boundaries may differ.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="flutter-case-study" class="case-study">
+  <div class="wrap">
+    <div class="eyebrow">08 / Case Study</div>
+    <h2>Offline-first Flutter application for field workflows.</h2>
+    <p class="section-sub">Cross-platform development with Flutter and Dart for enterprise and public-service use cases, including the ASHA government kiosk application.</p>
+    <div class="case-grid">
+      <article class="case-panel">
+        <h3>Context and challenge</h3>
+        <p>The ASHA kiosk application needed to remain useful in low-connectivity environments. Core workflows had to continue when a reliable network connection was unavailable.</p>
+        <h3>Implementation</h3>
+        <ul>
+          <li>Developed the application using Flutter and Dart.</li>
+          <li>Implemented an offline-first approach for reliable operation in low-connectivity environments.</li>
+          <li>Worked on online/offline data synchronization.</li>
+          <li>Also contributed to Flutter and Android development for NEC Corporation's VerifHire identity-verification platform.</li>
+        </ul>
+        <div class="case-tags"><span>Flutter</span><span>Dart</span><span>Offline-first</span><span>Synchronization</span><span>Android</span></div>
+      </article>
+      <aside class="case-panel">
+        <h3>Experience highlights</h3>
+        <div class="arch-flow">
+          <div class="arch-node">Flutter application</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Local / offline workflows</div>
+          <div class="arch-arrow">↕</div>
+          <div class="arch-node">Online data synchronization</div>
+        </div>
+        <p style="margin-top:18px">This case study is limited to the implementation details documented in the resume; specific storage and conflict-resolution technologies are not claimed.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="dominos-case-study" class="case-study">
+  <div class="wrap">
+    <div class="eyebrow">09 / Case Study</div>
+    <h2>Improving ordering and payment reliability.</h2>
+    <p class="section-sub">Native Android development for Domino's Pizza Indonesia, spanning ordering, payment integration and live order tracking.</p>
+    <div class="case-grid">
+      <article class="case-panel">
+        <h3>What I worked on</h3>
+        <ul>
+          <li>Developed ordering, payment and live order-tracking features.</li>
+          <li>Integrated multiple payment gateways and REST APIs.</li>
+          <li>Reworked payment error handling and added retry logic for failed transactions.</li>
+          <li>Contributed to related Jubilant applications, including video streaming, Jivanjor and enterprise ERP solutions.</li>
+        </ul>
+        <div class="case-tags"><span>Android</span><span>Kotlin</span><span>MVP</span><span>REST APIs</span><span>Payment gateways</span></div>
+      </article>
+      <aside class="case-panel">
+        <h3>Measured outcome</h3>
+        <div class="arch-node" style="text-align:center;padding:26px;font-size:28px;font-weight:800">+15%</div>
+        <p style="margin-top:14px">Improvement in transaction success rate after revisiting payment error handling and retry logic, as recorded in the resume.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="engineering">
+  <div class="wrap">
+    <div class="eyebrow">09 / Engineering Practice</div>
+    <h2>Engineering decisions beyond writing code.</h2>
+    <p class="section-sub">A few areas I focus on when designing, evolving and maintaining mobile applications.</p>
+    <div class="proj-grid engineering-grid">
+      <article class="proj-card">
+        <div class="proj-title">Architecture &amp; modularization</div>
+        <p class="proj-desc">MVVM, Clean Architecture, reusable SDKs, separation of concerns and maintainable feature boundaries.</p>
+      </article>
+      <article class="proj-card">
+        <div class="proj-title">Networking trade-offs</div>
+        <p class="proj-desc">Evaluating Ktor, Retrofit, OkHttp and Cronet based on platform needs, transport behavior, maintainability and performance.</p>
+      </article>
+      <article class="proj-card">
+        <div class="proj-title">Cross-platform boundaries</div>
+        <p class="proj-desc">Deciding what belongs in shared KMP modules and what should remain platform-specific, while keeping native experiences intact.</p>
+      </article>
+      <article class="proj-card">
+        <div class="proj-title">AI-assisted development</div>
+        <p class="proj-desc">Using Cursor, Claude Code, Gemini and ChatGPT to accelerate development, debugging and engineering workflows.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
-    <div class="eyebrow">04 / Projects</div>
+    <div class="eyebrow">10 / Projects</div>
     <h2>Apps in production, at scale.</h2>
     <p class="section-sub"></p>
     <div class="proj-grid">
@@ -596,7 +594,7 @@
 
 <section id="education">
   <div class="wrap">
-    <div class="eyebrow">05 / Education</div>
+    <div class="eyebrow">11 / Education</div>
     <div class="edu-row">
       <div class="edu-name">Jaypee Institute of Information Technology (JIIT)</div>
       <div class="edu-meta">Noida, India</div>
@@ -606,7 +604,7 @@
 
 <footer id="contact">
   <div class="wrap">
-    <div class="eyebrow">06 / Contact</div>
+    <div class="eyebrow">12 / Contact</div>
     <div class="contact-grid">
       <div>
         <h2>Let's talk Android.</h2>
@@ -623,21 +621,6 @@
   </div>
 </footer>
 
-<script>
-  (function(){
-    var btn=document.getElementById('themeToggle');
-    function sync(){
-      var light=document.documentElement.getAttribute('data-theme')==='light';
-      btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-    }
-    btn.addEventListener('click',function(){
-      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
-      document.documentElement.setAttribute('data-theme',next);
-      try{localStorage.setItem('theme',next);}catch(e){}
-      sync();
-    });
-    sync();
-  })();
-</script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
